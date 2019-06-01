@@ -6,10 +6,8 @@ import requests
 from io import BytesIO
 import xml.etree.cElementTree as ElementTree
 
-AWS_URL = "https://s3.amazonaws.com/noaa-goes16/"
 
-
-def get_filenames(product, year, dayofyear, hour):
+def get_filenames(product, year, dayofyear, hour, AWS_URL="https://s3.amazonaws.com/noaa-goes16/"):
     url = "%s?prefix=%s/%s/%s/%s/" % \
             (AWS_URL, str(product), str(year), str(dayofyear).zfill(3), str(hour).zfill(2))
     content = requests.get(url)
@@ -30,7 +28,7 @@ def parse_xml(content):
 
     return filenames
 
-def get_files(filelist, save_path=''):
+def get_files(filelist, save_path='', AWS_URL="https://s3.amazonaws.com/noaa-goes16/"):
     files = []
     for filename in filelist:
         content = requests.get(AWS_URL + filename)
