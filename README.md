@@ -1,4 +1,4 @@
-Pyxrad
+Pygoes
 ======
 
 This repository contains scripts useful for querying and obtaining data from the Amazon Web Services GOES 16/17 archives. For general information on these satellites, visit https://www.goes-r.gov/.
